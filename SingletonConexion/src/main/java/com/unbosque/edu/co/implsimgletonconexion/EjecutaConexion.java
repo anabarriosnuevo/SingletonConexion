@@ -5,6 +5,8 @@
  */
 package com.unbosque.edu.co.implsimgletonconexion;
 
+import java.sql.Connection;
+
 /**
  *
  * @author Grupo 1
@@ -20,6 +22,16 @@ public class EjecutaConexion {
         System.out.println(conexion.getUser());
         
         System.out.println(conexion.getPass());
-
+        
+        try {
+            Connection con = conexion.getConnection();
+            if (con != null) {
+                System.out.println("Conexion Exitosa");
+            } else {
+                System.out.println("Conexion Erronea");
+            }    
+        } catch (Exception e) {
+            System.out.println("Error de conexion: " + e.getMessage());
+        }
     }
 }
